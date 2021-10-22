@@ -1,0 +1,11 @@
+org/csits/platform/autoconfigure/cache/properties/RedisAreaCache.class
+org/csits/platform/autoconfigure/cache/convertor/JacksonKeyConvertor.class
+org/csits/platform/autoconfigure/cache/CsitsCacheAutoConfiguration.class
+org/csits/platform/autoconfigure/cache/BeanDependencyManager.class
+org/csits/platform/autoconfigure/cache/configure/AbstractCacheAutoInit.class
+org/csits/platform/autoconfigure/cache/properties/CsitsCacheProperties.class
+org/csits/platform/autoconfigure/cache/properties/LocalAreaCache.class
+org/csits/platform/autoconfigure/cache/properties/AreaCache.class
+org/csits/platform/autoconfigure/cache/configure/CaffeineAutoConfiguration.class
+org/csits/platform/autoconfigure/cache/configure/AutoConfigureBeans.class
+org/csits/platform/autoconfigure/cache/condition/CsitsCacheCondition.class

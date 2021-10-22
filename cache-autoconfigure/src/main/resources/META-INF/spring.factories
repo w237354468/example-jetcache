@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  org.csits.platform.autoconfigure.cache.CsitsCacheAutoConfiguration

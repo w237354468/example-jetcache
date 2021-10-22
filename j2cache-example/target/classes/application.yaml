@@ -1,0 +1,6 @@
+j2cache:
+  #????j2cache???????
+
+  config-location: classpath:j2cache.properties
+  redis-client: lettuce
+  open-spring-cache: true

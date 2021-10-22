@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="j2cache-example" />
+        <module name="example1" />
+        <module name="cache-autoconfigure" />
+        <module name="example2" />
+        <module name="cache-starter" />
+        <module name="cache-component" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="example-spring-cache" target="11" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="cache-autoconfigure" options="-parameters" />
+      <module name="cache-component" options="-parameters" />
+      <module name="cache-starter" options="-parameters" />
+      <module name="example-jetcache" options="-parameters" />
+      <module name="example-spring-cache" options="-parameters" />
+      <module name="example1" options="-parameters" />
+      <module name="example2" options="-parameters" />
+      <module name="j2cache-example" options="-parameters" />
+    </option>
+  </component>
+</project>
