@@ -8,7 +8,9 @@ import org.springframework.data.redis.connection.RedisConnectionFactory;
  *
  * @author <a href="mailto:areyouok@gmail.com">huangli</a>
  */
-public class RedisSpringDataCacheBuilder<T extends ExternalCacheBuilder<T>> extends ExternalCacheBuilder<T> {
+public class RedisSpringDataCacheBuilder<T extends ExternalCacheBuilder<T>> extends
+    ExternalCacheBuilder<T> {
+
     protected RedisSpringDataCacheBuilder() {
         buildFunc(config -> new RedisSpringDataCache((RedisSpringDataCacheConfig) config));
     }
@@ -34,7 +36,9 @@ public class RedisSpringDataCacheBuilder<T extends ExternalCacheBuilder<T>> exte
         getConfig().setConnectionFactory(connectionFactory);
     }
 
-    public static class RedisSpringDataCacheBuilderImpl extends RedisSpringDataCacheBuilder<RedisSpringDataCacheBuilderImpl> {
+    public static class RedisSpringDataCacheBuilderImpl extends
+        RedisSpringDataCacheBuilder<RedisSpringDataCacheBuilderImpl> {
+
     }
 
 }

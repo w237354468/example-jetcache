@@ -1,14 +1,13 @@
 package org.csits.platform.component.cache;
 
-import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.core.env.EnumerablePropertySource;
-import org.springframework.core.env.PropertySource;
-import org.springframework.util.Assert;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
+import org.springframework.core.env.ConfigurableEnvironment;
+import org.springframework.core.env.EnumerablePropertySource;
+import org.springframework.core.env.PropertySource;
+import org.springframework.util.Assert;
 
 public class ConfigTree {
 
@@ -37,7 +36,7 @@ public class ConfigTree {
         for (PropertySource<?> source : environment.getPropertySources()) {
             if (source instanceof EnumerablePropertySource) {
                 for (String name : ((EnumerablePropertySource<?>) source)
-                        .getPropertyNames()) {
+                    .getPropertyNames()) {
                     if (name != null && name.startsWith(prefix)) {
                         String subKey = name.substring(prefix.length());
                         m.put(subKey, environment.getProperty(name));
@@ -73,8 +72,8 @@ public class ConfigTree {
     public Set<String> directChildrenKeys() {
         Map<String, Object> m = getProperties();
         return m.keySet().stream().map(
-                        s -> s.indexOf('.') >= 0 ? s.substring(0, s.indexOf('.')) : null)
-                .filter(s -> s != null)
-                .collect(Collectors.toSet());
+                s -> s.indexOf('.') >= 0 ? s.substring(0, s.indexOf('.')) : null)
+            .filter(s -> s != null)
+            .collect(Collectors.toSet());
     }
 }

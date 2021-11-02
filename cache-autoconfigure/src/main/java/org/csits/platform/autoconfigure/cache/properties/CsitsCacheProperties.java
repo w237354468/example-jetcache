@@ -1,8 +1,7 @@
 package org.csits.platform.autoconfigure.cache.properties;
 
-import org.springframework.boot.context.properties.ConfigurationProperties;
-
 import java.util.Map;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("csits.cache")
 public class CsitsCacheProperties {
@@ -13,24 +12,21 @@ public class CsitsCacheProperties {
     private boolean penetrationProtect = false;
     private boolean enableMethodCache = true;
 
-    private Map<String, LocalAreaCache> local;
-    private Map<String, RedisAreaCache> remote;
+    private Map<String, LocalAreaCacheConfig> local;
+    private Map<String, RedisAreaCacheConfig> remote;
 
     public CsitsCacheProperties() {
     }
 
     public String[] getHiddenPackages() {
-        // keep same with GlobalCacheConfig
         return hiddenPackages;
     }
 
     public void setHiddenPackages(String[] hiddenPackages) {
-        // keep same with GlobalCacheConfig
         this.hiddenPackages = hiddenPackages;
     }
 
     public void setHidePackages(String[] hidePackages) {
-        // keep same with GlobalCacheConfig
         this.hiddenPackages = hidePackages;
     }
 
@@ -66,20 +62,20 @@ public class CsitsCacheProperties {
         this.enableMethodCache = enableMethodCache;
     }
 
-    public Map<String, LocalAreaCache> getLocal() {
+    public Map<String, LocalAreaCacheConfig> getLocal() {
         return local;
     }
 
     public void setLocal(
-            Map<String, LocalAreaCache> local) {
+        Map<String, LocalAreaCacheConfig> local) {
         this.local = local;
     }
 
-    public Map<String, RedisAreaCache> getRemote() {
+    public Map<String, RedisAreaCacheConfig> getRemote() {
         return remote;
     }
 
-    public void setRemote(Map<String, RedisAreaCache> remote) {
+    public void setRemote(Map<String, RedisAreaCacheConfig> remote) {
         this.remote = remote;
     }
 

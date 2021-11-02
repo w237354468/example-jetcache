@@ -2,7 +2,7 @@ package org.csits.platform.autoconfigure.cache.properties;
 
 import com.alicp.jetcache.anno.SerialPolicy;
 
-public class RedisAreaCache extends AreaCache {
+public class RedisAreaCacheConfig extends GenericAreaCacheConfig {
 
     private String keyPrefix;
     private String connectionFactory;

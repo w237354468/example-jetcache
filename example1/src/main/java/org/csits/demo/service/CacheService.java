@@ -8,6 +8,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class CacheService {
 
-    @CreateCache(name = "CacheService.strCache", expire = 20, cacheType = CacheType.BOTH, localLimit = 5)
+    @CreateCache(name = "CacheService.strCache", expire = 20, cacheType = CacheType.LOCAL, localLimit = 5)
     public Cache<Long, String> strCache;
 }

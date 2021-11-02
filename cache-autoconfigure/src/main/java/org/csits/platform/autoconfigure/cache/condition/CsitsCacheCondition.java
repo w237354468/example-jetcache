@@ -1,16 +1,15 @@
 package org.csits.platform.autoconfigure.cache.condition;
 
+import java.util.Map;
+import java.util.Objects;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.csits.platform.component.cache.ConfigTree;
 import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
 import org.springframework.boot.autoconfigure.condition.SpringBootCondition;
 import org.springframework.context.annotation.ConditionContext;
 import org.springframework.core.env.ConfigurableEnvironment;
 import org.springframework.core.type.AnnotatedTypeMetadata;
-
-import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public class CsitsCacheCondition extends SpringBootCondition {
 
@@ -25,9 +24,9 @@ public class CsitsCacheCondition extends SpringBootCondition {
     // 通用的remote注入
     @Override
     public ConditionOutcome getMatchOutcome(ConditionContext conditionContext,
-                                            AnnotatedTypeMetadata annotatedTypeMetadata) {
+        AnnotatedTypeMetadata annotatedTypeMetadata) {
         ConfigTree ct = new ConfigTree((ConfigurableEnvironment) conditionContext.getEnvironment(),
-                CSITS_CACHE_PREFIX);
+            CSITS_CACHE_PREFIX);
         if (matchRemote(ct)) {
             return ConditionOutcome.match();
         } else {
@@ -39,8 +38,8 @@ public class CsitsCacheCondition extends SpringBootCondition {
         Map<String, Object> m = ct.subTree("remote.").getProperties();
 
         Set<String> cacheAreaNames = m.keySet().stream().map((s) -> s.substring(0, s.indexOf('.')))
-                .collect(
-                        Collectors.toSet());
+            .collect(
+                Collectors.toSet());
         return cacheAreaNames.stream().anyMatch((s) -> cacheType.equals(m.get(s + ".type")));
     }
 }

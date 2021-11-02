@@ -24,7 +24,7 @@ public class CacheController {
     // 先put，后get
     @GetMapping("put")
     public String get(@RequestParam("key") Long key,
-                      @RequestParam("value") String value) {
+        @RequestParam("value") String value) {
         cacheService.strCache.put(key, value);
         return "success";
     }

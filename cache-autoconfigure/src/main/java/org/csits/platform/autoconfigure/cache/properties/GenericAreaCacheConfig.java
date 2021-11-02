@@ -1,15 +1,14 @@
 package org.csits.platform.autoconfigure.cache.properties;
 
 
-import com.alicp.jetcache.RefreshPolicy;
 import com.alicp.jetcache.anno.CacheConsts;
 
-public class AreaCache {
+public class GenericAreaCacheConfig {
 
     protected String type;
     protected String keyConvertor = "bean:jacksonKeyConvertor";
-    protected Long expireAfterWriteInMillis = (long) CacheConsts.DEFAULT_EXPIRE;
-    protected Long expireAfterAccessInMillis = 0L;
+    protected Integer expireAfterWriteInMillis = CacheConsts.DEFAULT_EXPIRE;
+    protected Integer expireAfterAccessInMillis = 0;
 
     public String getKeyConvertor() {
         return keyConvertor;
@@ -19,19 +18,19 @@ public class AreaCache {
         this.keyConvertor = keyConvertor;
     }
 
-    public Long getExpireAfterWriteInMillis() {
+    public Integer getExpireAfterWriteInMillis() {
         return expireAfterWriteInMillis;
     }
 
-    public void setExpireAfterWriteInMillis(Long expireAfterWriteInMillis) {
+    public void setExpireAfterWriteInMillis(Integer expireAfterWriteInMillis) {
         this.expireAfterWriteInMillis = expireAfterWriteInMillis;
     }
 
-    public Long getExpireAfterAccessInMillis() {
+    public Integer getExpireAfterAccessInMillis() {
         return expireAfterAccessInMillis;
     }
 
-    public void setExpireAfterAccessInMillis(Long expireAfterAccessInMillis) {
+    public void setExpireAfterAccessInMillis(Integer expireAfterAccessInMillis) {
         this.expireAfterAccessInMillis = expireAfterAccessInMillis;
     }
 

@@ -2,7 +2,6 @@ package org.csits.platform.autoconfigure.cache.convertor;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
 import java.util.function.Function;
 
 public class JacksonKeyConvertor implements Function<Object, Object> {

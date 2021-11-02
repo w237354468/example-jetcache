@@ -1,10 +1,14 @@
 package org.csits.platform.autoconfigure.cache.configure;
 
+import static com.alicp.jetcache.anno.CacheConsts.DEFAULT_AREA;
+
 import com.alicp.jetcache.CacheBuilder;
 import com.alicp.jetcache.embedded.CaffeineCacheBuilder;
+import java.util.HashMap;
+import java.util.Map;
 import org.csits.platform.autoconfigure.cache.condition.CsitsCacheCondition;
 import org.csits.platform.autoconfigure.cache.properties.CsitsCacheProperties;
-import org.csits.platform.autoconfigure.cache.properties.LocalAreaCache;
+import org.csits.platform.autoconfigure.cache.properties.LocalAreaCacheConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.autoconfigure.condition.ConditionOutcome;
@@ -14,14 +18,9 @@ import org.springframework.context.annotation.Conditional;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.type.AnnotatedTypeMetadata;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import static com.alicp.jetcache.anno.CacheConsts.DEFAULT_AREA;
-
 @Configuration
-@Conditional(CaffeineAutoConfiguration.LocalCacheCondition.class)
-public class CaffeineAutoConfiguration {
+@Conditional(LocalCaffeineAutoConfiguration.LocalCacheCondition.class)
+public class LocalCaffeineAutoConfiguration {
 
     @Bean
     public CaffeineAutoInit caffeineAutoInit() {
@@ -29,8 +28,9 @@ public class CaffeineAutoConfiguration {
     }
 
     public static class CaffeineAutoInit extends AbstractCacheAutoInit {
+
         private static final Logger logger = LoggerFactory.getLogger(
-                CaffeineAutoConfiguration.class);
+            LocalCaffeineAutoConfiguration.class);
 
         public CaffeineAutoInit() {
             super("caffeine");
@@ -38,7 +38,7 @@ public class CaffeineAutoConfiguration {
 
         @Override
         protected void initCache(CsitsCacheProperties properties) {
-            Map<String, LocalAreaCache> localCacheAreas = properties.getLocal();
+            Map<String, LocalAreaCacheConfig> localCacheAreas = properties.getLocal();
 
             if (localCacheAreas == null) {
                 localCacheAreas = new HashMap<>();
@@ -46,7 +46,7 @@ public class CaffeineAutoConfiguration {
 
             // 加载默认default
             if (localCacheAreas.isEmpty() || !localCacheAreas.containsKey(DEFAULT_AREA)) {
-                localCacheAreas.put(DEFAULT_AREA, new LocalAreaCache());
+                localCacheAreas.put(DEFAULT_AREA, new LocalAreaCacheConfig());
             }
 
             for (String areaKey : localCacheAreas.keySet()) {
@@ -59,7 +59,7 @@ public class CaffeineAutoConfiguration {
             }
         }
 
-        protected void parseGeneralConfig(CacheBuilder builder, LocalAreaCache ac) {
+        protected void parseGeneralConfig(CacheBuilder builder, LocalAreaCacheConfig ac) {
 
             super.parseGeneralConfig(builder, ac);
             CaffeineCacheBuilder acb = (CaffeineCacheBuilder) builder;
@@ -75,7 +75,8 @@ public class CaffeineAutoConfiguration {
         }
 
         @Override
-        public ConditionOutcome getMatchOutcome(ConditionContext conditionContext, AnnotatedTypeMetadata annotatedTypeMetadata) {
+        public ConditionOutcome getMatchOutcome(ConditionContext conditionContext,
+            AnnotatedTypeMetadata annotatedTypeMetadata) {
             return ConditionOutcome.match();
         }
     }
