@@ -3,9 +3,6 @@ package org.csits.demo.domain;
 import java.io.Serializable;
 import java.util.UUID;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
 public class User implements Serializable {
 
     private Integer id;
